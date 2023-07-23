@@ -6,20 +6,21 @@ import eye from './eye-open.png'
 import dublicate from './duplicate.png'
 import bookmark from './bookmark.png'
 import Comments from './Comments'
+import { article, author } from '../../content'
 
 function ArticlePage() {
     return (
         <>
             {/* bg-[#fffdfa] */}
 
-            <div className="flex justify-center  h-[500px] w-100 bg-[#fffdfa]">
+            <div className="flex justify-center    w-100 bg-[#fffdfa] mt-[3.5rem]">
 
-                <div className='h-100 w-[1200px] mt-3 bg-white justify-self-center bg-[#fffdfa]'>
+                <div className='h-100 w-[1200px] mt-3   justify-self-center bg-[#fffdfa]'>
                     <div className="py-5 ">
                         <div className="flex bg-[#fffdfa]">
 
                             <div className='text-[2.125rem] leading-[2.5rem] font-[700]   float-left text-gray-600 bg-[#fffdfa]  w-5/6'>
-                                On the Gradient Formula for learning Generative Models with Regularized Optimal Transport Costs
+                                {article.heading}
                             </div>
                             <div className="icon  float-right ml-[100px] w-1/6 pl-[100px]">
                                 <img className='w-[40px]' src={img}></img>
@@ -28,7 +29,18 @@ function ArticlePage() {
                         <div className="py-1 bg-[#fffdfa]">
 
                             <span className="italic font-sans text-[1.25rem] leading-[1.5rem] ">
-                                Tanguy Bosser, Souhaib Ben Taieb
+
+                                {author.map((data, i) => {
+                                    return (
+                                        <span key={i}>
+                                            {data.name } 
+                                            <span>  </span>
+                                             
+                                        </span>
+                                    );
+
+                                })}
+                                .
                             </span>
                         </div>
                         <div className="bg-[#fffdfa]">
@@ -37,7 +49,7 @@ function ArticlePage() {
                                 <span className="pl-1">
                                     Published:
                                 </span>
-                                17 Jul 2023 ,  Last Modified: 17 Jul 2023
+                                {article.published_dt} ,  Last Modified: { article.last_modified}
                                 <img className='w-[.875rem] inline mb-1 mr-1 ml-4' src={folder} ></img>
 
                                 Accepted by TMLR
@@ -57,40 +69,55 @@ function ArticlePage() {
                     <div className="text-[.75rem] leading-[1.125rem] mt-[-0.875rem] bg-[#fffdfa]">
                         <span className="block">
                             <strong className='text-[#8c1b13]'> Abstract : </strong>
-                            Variational inference with Gaussian mixture models (GMMs) enables learning of highly tractable yet multi-modal approximations of intractable target distributions with up to a few hundred dimensions. The two currently most effective methods for GMM-based variational inference, VIPS and iBayes-GMM, both employ independent natural gradient updates for the individual components and their weights. We show for the first time, that their derived updates are equivalent, although their practical implementations and theoretical guarantees differ. We identify several design choices that distinguish both approaches, namely with respect to sample selection, natural gradient estimation, stepsize adaptation, and whether trust regions are enforced or the number of components adapted. We argue that for both approaches, the quality of the learned approximations can heavily suffer from the respective design choices: By updating the individual components using samples from the mixture model, iBayes-GMM often fails to produce meaningful updates to low-weight components, and by using a zero-order method for estimating the natural gradient, VIPS scales badly to higher-dimensional problems. Furthermore, we show that information-geometric trust-regions (used by VIPS) are effective even when using first-order natural gradient estimates, and often outperform the improved Bayesian learning rule (iBLR) update used by iBayes-GMM. We systematically evaluate the effects of design choices and show that a hybrid approach significantly outperforms both prior works. Along with this work, we publish our highly modular and efficient implementation for natural gradient variational inference with Gaussian mixture models, which supports
-                            different combinations of design choices, facilitates the reproduction of all our experiments, and may prove valuable for the practitioner.
+                              {article.abstract}
                         </span>
                         <div className="block">
                             <strong className='text-[#8c1b13] font-[700]'> License : </strong>
-                            Creative Commons Attribution 4.0 International (CC BY 4.0)
+                            {article.license}
                         </div>
                         <div className="bock">
                             <strong className='text-[#8c1b13] font-[700]'> Submission Length : </strong>
-                            Regular submission (no more than 12 pages of main content)
+                           {article.sub_len}
 
                         </div>
                         <div className="bock">
-                            <strong className='text-[#8c1b13] font-[700]'> Submission Length : </strong>
-                            Regular submission (no more than 12 pages of main content)
-
+                            <strong className='text-[#8c1b13] font-[700]'>Code : </strong>
+                            <a href={article.code_url} className='text-[#337ab7]'> {article.code_url}</a>
                         </div>
                         <div className="bock">
-                            <strong className='text-[#8c1b13] font-[700]'> Submission Length : </strong>
-                            Regular submission (no more than 12 pages of main content)
-
+                            <strong className='text-[#8c1b13] font-[700]'> Assigned Action Editor: </strong>
+                            <span className='text-[#337ab7]'> {article.Assigned_Action_Editor} </span>                            
+                        </div>
+                        <div className="bock">
+                            <strong className='text-[#8c1b13] font-[700]'> Submission Number : </strong>
+                            <span > {article.sub_num} </span>                            
                         </div>
 
                     </div>
 
+                    <div className="ab m-0">
+                        <div className='bg-[#fffdfa] w-100 h-[100px] border-[#3f6978] border-solid'>
+                            <div className="float-right">
+                                <span className='text-[0.75rem] text-gray-600'>
+                                    Add:
+                                </span>
+                                <span className="box-content text-white bg-[#4d8093] text-[0.55 rem] border-solid ml-2 md:font-bold p-2 pt-0 rounded">
+                                    <a href='' className='text-[0.75rem]'>
+                                        public comment
+                                    </a>
+                                </span>
+                            </div>
 
-                    <div className="bg-[#fffdfa] my-[1rem] ">
-                        <div className="">
-                            <Comments />
-                        </div> 
-                        <div className="mb-[1rem]">
-                            <Comments />
+
                         </div>
                     </div>
+
+
+                 <div className="m-0">
+                     <Comments />
+                 </div>
+
+
 
 
 

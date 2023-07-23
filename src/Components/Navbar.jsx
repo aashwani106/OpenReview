@@ -2,7 +2,7 @@ import React from 'react'
 
 function Navbar() {
     return (
-        <nav className="bg-red-900 border-gray-200 ">
+        <nav className="bg-red-900 border-gray-200 fixed top-0 right-0 left-0  ">
             <div className="max-w-screen-xl flex flex-wrap  justify-between mx-auto py-3 ">
                 <a href="" className="flex items-center">
                    
