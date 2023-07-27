@@ -6,12 +6,14 @@ module.exports = {
     "./src/Components/ArticlePage/ArticlePage.js",
     "./src/Components/HomePage/Home.js",
     "./src/Components/ArticlePage/Comment.js",
+    "./src/Components/Card.js",
+    "./node_modules/tw-elements/dist/js/tw-elements.umd.min.js"
     
   ],
   theme: {
     extend: {},
   },
-  plugins: [
-],
+  plugins: [require("tw-elements/dist/plugin.cjs")],
+  darkMode: "class"
 }
 

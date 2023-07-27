@@ -8,7 +8,7 @@ function home() {
             <div className="flex justify-center   h-[500px] w-100 mt-[3.5rem]">
                 <div className="h-100 w-[1200px] mt-3 bg-white justify-self-center block">
                     <div className="py-5">
-                        <div className='text-[2.125rem] leading-[2.5rem] font-[700] '
+                        <div className='text-[2.125rem] leading-[2.5rem] font-[700] '>
                             Transactions on Machine Learning Research
                         </div>
 

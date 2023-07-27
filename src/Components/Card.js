@@ -1,20 +1,19 @@
-import React from 'react'
-import imgFile from './file.png'
-import {
-  Collapse,
-  Ripple,
-  initTE,
-} from "tw-elements";
+import React, { useState } from 'react'
+import imgFile from '../Components/ArticlePage/file.png'
+import {useNavigate} from "react-router-dom"
 
-initTE({ Collapse, Ripple });
 
 
 function Card() {
+  const navigate = useNavigate();
+  const [show, setShow] = useState(false);
   return (
     <>
       <div className=''>
         <h3 className=' text-[1.25rem] md:font-bold text-[#4d8093]'>
-          Data Augmentation is a Hyperparameter: Cherry-picked Self-Supervision for Unsupervised Anomaly Detection is Creating the Illusion of Success
+          <span className='cursor-pointer' onClick={()=>navigate("/Article")}>
+            Data Augmentation is a Hyperparameter: Cherry-picked Self-Supervision for Unsupervised Anomaly Detection is Creating the Illusion of Success
+          </span>
           <img className='w-4 h-4 inline ml-3' src={imgFile} alt="File img" />
         </h3>
       </div>
@@ -45,18 +44,15 @@ function Card() {
 
       </div>
       <div>
-        <a href="#collapseExample"
-          data-te-collapse-init
-          role="button"
-          aria-expanded="false"
-          aria-controls="#collapseExample"
-          className='text-[0.75rem] text-[#4d8093]'>
+        <a type='button'
+          className='text-[0.75rem] text-[#4d8093] cursor-pointer'
+          onClick={() => setShow(!show)}
+        >
           Show Details
         </a>
 
-        <div className="!visible hidden" id="collapseExample" data-te-collapse-item>
-          <div
-            className=' bg-white m-1 p-1 space-y-[5px] '>
+        {show &&
+          <div className=' bg-white m-1 p-1 space-y-[5px] '>
             <div className='container'>
               <div className='text-[#8c1b13] text-[0.75rem] md:font-bold inline mr-3'>Authors that are also TMLR Expert Reviewers:
               </div>
@@ -101,8 +97,12 @@ function Card() {
 
 
           </div>
-        </div>
+        }
+
+
       </div>
+
+
     </>
   )
 }

@@ -8,27 +8,28 @@ const article = {
     sub_len: " Regular submission (no more than 12 pages of main content)",
     code_url: "https://github.com/jaeminyoo/SSL-AD",
     Assigned_Action_Editor: "Charles Xu",
-    sub_num: 1077
+    sub_num: 1077,
+    author : [
+
+        {
+            name: "Tanguy Bosser ,"
+        },
+        {
+            name: "Souhaib Ben Taieb ,"
+        },
+        {
+            name: "third author ,"
+        },
+        {
+            name: "third author"
+        },
+        
+    
+    
+    ]
+    
 }
 
-const author = [
-
-    {
-        name: "Tanguy Bosser ,"
-    },
-    {
-        name: "Souhaib Ben Taieb ,"
-    },
-    {
-        name: "third author ,"
-    },
-    {
-        name: "third author"
-    },
-    
-
-
-]
 
 
 
@@ -37,5 +38,4 @@ const author = [
 
 export {
     article,
-    author
 }

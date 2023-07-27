@@ -6,7 +6,7 @@ import eye from './eye-open.png'
 import dublicate from './duplicate.png'
 import bookmark from './bookmark.png'
 import Comments from './Comments'
-import { article, author } from '../../content'
+import { article } from '../../content'
 
 function ArticlePage() {
     return (
@@ -30,7 +30,7 @@ function ArticlePage() {
 
                             <span className="italic font-sans text-[1.25rem] leading-[1.5rem] ">
 
-                                {author.map((data, i) => {
+                                {article.author.map((data, i) => {
                                     return (
                                         <span key={i}>
                                             {data.name } 
