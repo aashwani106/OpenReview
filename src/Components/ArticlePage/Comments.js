@@ -1,0 +1,176 @@
+import React, { useState } from 'react'
+import { comments } from '../comment_content'
+import pencil from './pencil.png'
+import {
+    Collapse,
+    Ripple,
+    initTE,
+} from "tw-elements";
+
+initTE({ Collapse, Ripple });
+
+
+
+
+function Comments() {
+
+    const [show, setShow] = useState(true);
+    const [innerCmt, setInnerCmt] = useState(false)
+
+    return (
+        <>
+            <div className=''>
+
+                {comments.map((data, i) => {
+                    return (
+                        <div key={i}>
+                            <div className="box-content bg-[#efece3]  border-[#3f6978] border-solid  p-4 mt-4 mb-4 ">
+                                <div className="flex flex-col" style={{ "flexDirection": "column", "position": "absolute", "left": "138px" }}>
+
+                                    <button className=" " style={{ "minWidth": "auto", "borderWidth": "1px", "padding": "0 2px", "fontWeight": "400", "lineHeight": "13px", "fontSize": "12px", "borderTopRightRadius": "2px", "borderTopLeftRadius": "2px", "width": "100%", "display": "block", "color": "#4d8093", "backgroundColor": "#fffdfa", "border": "2px solid #3f6978" }}
+                                        onClick={() => setShow(false)}
+                                    >
+                                        −
+                                    </button>
+                                    <button className=""
+                                        onClick={() => setShow(true)}
+                                    >
+                                        ＝
+                                    </button>
+                                    <button className="" onClick={() => setInnerCmt(true)}>
+                                        ≡
+                                    </button>
+                                </div>
+                                <div className="flex ">
+
+                                    <div className="comments w-full md:w-auto ">
+                                        <div className="flex">
+                                            <span className='md:font-bold  relative  text-[#2c3a4a]  leading-[1.25rem]' style={{ top: "8px" }}>
+                                                {data.main_heading}
+                                            </span>
+                                            <span className=" text-[#777] font-[400] text-[0.55 rem] ml-2  p-2">
+                                                • by {data.meain_heading_by}
+                                            </span>
+                                        </div>
+                                        {/* rest comment  */}
+                                        {show &&
+
+                                            <div className="cmtdata">
+
+                                                {data.commentsData.map((data1, l) => {
+                                                    return (
+                                                        <div className='py-1 px-0' key={l}>
+                                                            <span className='font-[700] text-[#8c1b13] text-[0.75rem] block'>
+                                                                {data1.title}
+                                                            </span>
+                                                            <span className="cmt-text leading-[1.125rem] mb-1">
+
+                                                                <p className="text-[0.75rem] break-words ">
+                                                                    {data1.text}
+                                                                </p>
+                                                            </span>
+                                                        </div>
+                                                    )
+                                                })}
+                                                <div className="float-right">
+                                                    <span className='text-[0.75rem] text-gray-600'>
+                                                        Add:
+                                                    </span>
+                                                    <span className="box-content text-white bg-[#4d8093] text-[0.55 rem] border-solid ml-2 md:font-bold p-2 pt-0 rounded">
+                                                        <a href='' className='text-[0.75rem]'>
+                                                            public comment
+                                                        </a>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+
+                                        }
+
+
+                                    </div>
+                                </div>
+
+                                <div className="subCom">
+                                    {data.sub_comm.map((data2, j) => {
+                                        return (
+
+                                            <div key={j}>
+                                                <div className="flex flex-col" style={{ "flexDirection": "column", "position": "absolute", "left": "162px", "marginLeft": "5px", "marginTop": "3px" }}>
+                                                    <button className=" " style={{ "minWidth": "auto", "borderWidth": "1px", "padding": "0 2px", "fontWeight": "400", "lineHeight": "13px", "fontSize": "12px", "borderTopRightRadius": "2px", "borderTopLeftRadius": "2px", "width": "100%", "display": "block", "color": "#4d8093", "backgroundColor": "#fffdfa", "border": "2px solid #3f6978" }}
+                                                        onClick={() => setInnerCmt(false)}
+                                                    >
+                                                        −
+                                                    </button>
+                                                    <button className="">
+                                                        ＝
+                                                    </button>
+                                                    <button className="" onClick={() => setInnerCmt(true)}>
+                                                        ≡
+                                                    </button>
+                                                </div>
+                                                <div className='box-content bg-[#fffdfa]  border-[#3f6978] border-solid mt-4 p-4' style={{ "width": "94%", "alignSelf": "center", "marginLeft": "15px" }}>
+
+                                                    <div className="">
+
+                                                        <span className='md:font-bold text-[#2c3a4a] leading-[1.25rem]'>
+                                                            {data2.sub_comm_head}
+
+                                                        </span>
+                                                        <span className=" text-[#777] font-[400] text-[0.55 rem] ml-2  p-2">
+                                                            {data2.sub_comm_by}
+
+                                                        </span>
+                                                    </div>
+                                                    {/* rest sub comments  */}
+                                                    {innerCmt && <div className="cmtdata">
+                                                        {data2.innerCommentsData.map((data3, m) => {
+                                                            return (
+                                                                <>
+                                                                    <div className='py-1 px-0' key={m}>
+                                                                        <span className='font-[700] text-[#8c1b13] text-[0.75rem] block'>
+                                                                            {data3.title}
+
+                                                                        </span>
+                                                                        <span className="cmt-text leading-[1.125rem]">
+
+                                                                            <p className="text-[0.75rem] break-words">
+                                                                                {data3.text}
+
+                                                                            </p>
+                                                                        </span>
+                                                                    </div>
+
+                                                                </>
+                                                            )
+                                                        })}
+
+                                                    </div>}
+
+                                                </div>
+
+                                            </div>
+                                        )
+
+                                    })}
+
+
+
+
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                    );
+
+                })}
+            </div>
+
+        </>
+    )
+}
+
+export default Comments
